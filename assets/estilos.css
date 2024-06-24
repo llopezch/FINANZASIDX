@@ -1,0 +1,118 @@
+/* Estilo del contenedor principal de la aplicación */
+.app-container {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Crea un sidebar delgado fijo a la izquierda de la página */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 5rem;
+    padding: 2rem 1rem;
+    background-color: #cbd3dd;
+    z-index: 1050;  /* Asegurarse de que esté por debajo del botón */
+    transition: width 0.1s ease-in-out;
+}
+
+/* Cuando el usuario pasa el cursor sobre el sidebar, expándelo */
+.sidebar:hover {
+    width: 16rem;
+}
+
+/* Asegúrate de que el contenido de los enlaces de navegación no se divida cuando la barra de navegación colapse */
+.sidebar .nav-link {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+/* Ajusta el ancho de los íconos */
+.sidebar .nav-link i {
+    width: 1rem;
+}
+
+/* Oculta las etiquetas de los enlaces de navegación por defecto */
+.sidebar .nav-link span {
+    visibility: hidden;
+    opacity: 1;
+    transition: opacity 0.1s ease-in-out;
+}
+
+/* Cuando se pasa el cursor sobre el sidebar, muestra las etiquetas */
+.sidebar:hover .nav-link span {
+    visibility: visible;
+    opacity: 1;
+    color: black;
+}
+
+/* Contenedor para el encabezado del sidebar. Asegúrate de que el contenido no se divida cuando el sidebar esté colapsado */
+.sidebar-header {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+/* Posiciona el encabezado relativo al logo y ocúltalo por defecto */
+.sidebar-header h2 {
+    opacity: 0;
+    margin-left: 1rem;
+    margin-bottom: 0;
+    transition: opacity 0.1s ease-in-out;
+}
+
+/* Muestra el encabezado cuando se muestra el sidebar */
+.sidebar:hover .sidebar-header h2 {
+    opacity: 1;
+}
+
+/* Posiciona el contenido relativo al sidebar colapsado */
+.content {
+    margin-left: 7rem;
+    margin-right: 2rem;
+    padding: 2rem 1rem;
+}
+
+/* Estilo para el botón del menú en dispositivos móviles */
+.menu-button {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    z-index: 1100;  /* Siempre por encima del sidebar */
+    background-color: #000;  /* Fondo negro */
+    color: #fff;  /* Color de las líneas */
+    border: none;
+    display: none;  /* Oculto por defecto, se mostrará solo en pantallas pequeñas */
+    padding: 0.5rem;  /* Reduce el padding */
+    font-size: 0.875rem;  /* Tamaño de la fuente más pequeño */
+    width: 2.5rem;  /* Ancho del botón */
+    height: 2.5rem;  /* Altura del botón */
+    border-radius: 50%;  /* Botón redondo */
+}
+
+/* Ocultar sidebar y mostrar el botón del menú en pantallas pequeñas */
+@media (max-width: 768px) {
+    .sidebar {
+        display: none;
+    }
+    .sidebar.collapsed {
+        display: block;
+        width: 16rem;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        z-index: 1050;
+        background-color: #cbd3dd;
+    }
+    .menu-button {
+        display: inline-block;
+    }
+    .content {
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+}
