@@ -92,10 +92,12 @@ app.layout = html.Div(
 def toggle_sidebar(n_clicks, sidebar_class):
     if n_clicks:
         if "collapsed" in sidebar_class:
+             # Si el sidebar está colapsado, expandirlo
             return sidebar_class.replace(" collapsed", "")
         else:
+            # Si el sidebar está expandido, colapsarlo
             return sidebar_class + " collapsed"
     return sidebar_class
 
 if __name__ == "__main__":
-    app.run_server(debug=True)
+    app.run_server(debug=True,port=8052)

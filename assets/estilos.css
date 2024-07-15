@@ -115,4 +115,14 @@
         margin-left: 1rem;
         margin-right: 1rem;
     }
+
+    .sidebar.collapsed .nav-link span {
+        visibility: visible;  /* Muestra las etiquetas de los enlaces de navegación */
+        opacity: 1;
+    }
+    .sidebar.collapsed .sidebar-header h2 {
+        opacity: 1;  /* Muestra el encabezado del sidebar */
+    }
 }
+
+
